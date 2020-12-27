@@ -1,5 +1,6 @@
 // https://github.com/udacity/Javascript
 // https://medium.com/javascript-scene/javascript-factory-functions-vs-constructor-functions-vs-classes-2f22ceddf33e
+// https://github.com/mdn/learning-area
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 
 // ---------------------------------------------------------------------------
@@ -11,11 +12,15 @@ class Animal {
         this.weight = weight;
         this.diet = diet;
     }
+
+    compareHeight() {
+
+    }
 }
 
 class Human extends Animal {
-    constructor(species, height, weight, diet, name) {
-        super(species, height, weight, diet);
+    constructor(height, weight, diet, name) {
+        super('Homo Sapien', height, weight, diet);
         this.name = name;
     }
 }
@@ -29,6 +34,7 @@ class Dino extends Animal {
     }
 }
 
+var human = new Human();
 const dinosaurs = [];
 
 // ---------------------------------------------------------------------------
@@ -55,9 +61,20 @@ fetchDinosJSON('./dino.json').then(data => {
 
 // ---------------------------------------------------------------------------
 
-    // Create Human Object
+// Create Human Object
 
-    // Use IIFE to get human data from form
+human = new Human((5 * 12) + 9, 170, 'Herbavor', 'Kirby');
+
+// Use IIFE to get human data from form
+// (function getHuman() {
+//     human = new Human(
+//         'Homo Sapien',
+//         (document.getElementById('feet').value * 12) + document.getElementById('inches').value,
+//         document.getElementById('weight').value,
+//         document.getElementById('diet').value,
+//         document.getElementById('name').value);
+//     console.log(human);
+// })();
 
 
     // Create Dino Compare Method 1
