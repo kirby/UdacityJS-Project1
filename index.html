@@ -10,6 +10,7 @@
     <!-- Normalize browser styles -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
     <link href="app.css" rel="stylesheet">
+    <link href="tile.css" rel="stylesheet">
     <!-- Link to app.js with defer till HTML render -->
     <script defer src="app.js"></script>
 </head>
@@ -20,31 +21,56 @@
         <h3>How do you compare?</h3>
     </header>
     <!-- Form to get user input -->
-    <form id="dino-compare">
+    <form id="dino-compare" onsubmit="addHuman()">
         <div class="form-container">
             <!-- https://developer.mozilla.org/en-US/docs/Learn/Forms/UI_pseudo-classes -->
             <form onsubmit="getHuman()">
-            <p>Name:</p>
-            <input id="name" class="form-field__full" type="name" name="name" minlength="1">
-            <p>Height</p>
-            <label>Feet: <input id="feet" class="form-field__short" type="number" name="feet"></label>
-            <label>inches: <input id="inches" class="form-field__short" type="number" name="inches" min="0" max="12"></label>
-            <p>Weight:</p>
-            <label><input id="weight" class="form-field__full" type="number" name="weight" min="1">lbs</label>
-            <p>Diet:</p>
-            <select id="diet" class="form-field__full" name="diet">
-                <option value="Herbavor">Herbavor</option>
-                <option value="Omnivor">Omnivor</option>
-                <option value="Carnivor">Carnivor</option>
-            </select>
-            <div id="btn">
-                <input type="submit" value="Compare Me!">
-            </div>
+                <p>Name:</p>
+                <input id="name" class="form-field__full" type="name" name="name" minlength="1" value="Kirby">
+                
+                <p>Height</p>
+                <label>Feet: <input id="feet" class="form-field__short" type="number" name="feet" value="5"></label>
+                <label>inches: <input id="inches" class="form-field__short" type="number" name="inches" min="0" max="12" value="9"></label>
+                
+                <p>Weight:</p>
+                <label><input id="weight" class="form-field__full" type="number" name="weight" min="1" value="160">lbs</label>
+                
+                <p>Diet:</p>
+                <select id="diet" class="form-field__full" name="diet">
+                    <option value="Herbavor">Herbavor</option>
+                    <option value="Omnivor" selected>Omnivor</option>
+                    <option value="Carnivor">Carnivor</option>
+                </select>
+                
+                <div id="btn">
+                    <input type="submit" value="Compare Me!">
+                </div>
             </form>
         </div>
     </form>
     <!-- .grid to attach tiles to -->
-    <main id="grid"></main>
+    <main id="grid">
+        <div class="divTable unstyledTable" style="display: none;">
+            <div class="divTableBody">
+                <div class="divTableRow">
+                    <div id="tile" class="divTableCell">cell1_1</div>
+                    <div id="tile" class="divTableCell">cell2_1</div>
+                    <div id="tile" class="divTableCell">cell3_1</div>
+                </div>
+                <div class="divTableRow">
+                    <div id="tile" class="divTableCell">cell1_2</div>
+                    <div id="tile" class="divTableCell">cell2_2</div>
+                    <div id="tile" class="divTableCell">cell3_2</div>
+                </div>
+                <div class="divTableRow">
+                    <div id="tile" class="divTableCell">cell1_3</div>
+                    <div id="tile" class="divTableCell">cell2_3</div>
+                    <div id="tile" class="divTableCell">cell3_3</div>
+                </div>
+            </div>
+        </div>        
+    </main>
+
     <footer>
         <!-- Include information source -->
         <p class="fine-print">Data Sourced from <a href="https://www.wikipedia.org/">Wikipedia.org</a>, all numbers are approximations.</p>
