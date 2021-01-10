@@ -13,9 +13,17 @@ class Animal {
         this.weight = weight;
         this.diet = diet;
     }
+    
+    compareHeightLessThan(animal) {
+        return (this.height < animal.height) ? true : false;
+    }
 
-    compareHeight() {
+    compareWeightLessThan(animal) {
+        return (this.weight < animal.weight) ? true : false;
+    }
 
+    compareDietDifferentFrom(animal) {
+        return (this.diet == animal.diet) ? true : false;
     }
 }
 
@@ -66,11 +74,11 @@ fetchDinosJSON('./dino.json').then(data => {
     alert('Fetch Error\n' + error.message);
 });
 
-function createTile(dinosaur) {
+function createTile(animal) {
     const tile = document.createElement('div');
     const image = document.createElement('img');    // 640x480
-    image.src = encodeURIComponent("images/" + (dinosaur.species).toLowerCase() + ".png");
-    image.alt = dinosaur.species;
+    image.src = encodeURIComponent("images/" + (animal.species).toLowerCase() + ".png");
+    image.alt = animal.species;
     tile.appendChild(image);
 
     return tile;
@@ -116,11 +124,21 @@ function addHuman() {
         document.getElementById('name').value);
     console.log(human);
 
+    // Create tile for human
+    let humanTile = createTile(human);
+
     // Hide dino-compare form
     let dinoForm = document.getElementById("dino-compare");
     dinoForm.style.display = "none";
-    let grid = document.getElementById("grid");
-    grid.style.display = "block";
+
+    // Display the grid div
+    displayDinosaurs(humanTile);
 }
 
-// On button click, prepare and display infographic
+// 
+function displayDinosaurs() {
+    let gridTiles = document.getElementById("grid");
+    gridTiles.style.display = "block"
+
+    alert(tiles[0].name);
+}
